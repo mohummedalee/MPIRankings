@@ -281,7 +281,7 @@ var Controller = function(cb){
             str += "<ul>";
             // iterate over all faculty
             for(var i=0; i<areaToFaculty[area].length; i++){
-                str += "<li><a href=\"" + areaToFaculty[area][i][1] + "\">" + areaToFaculty[area][i][0] + "</a></li>";
+                str += "<li><a target=\"_blank\" href=\"" + areaToFaculty[area][i][1] + "\">" + areaToFaculty[area][i][0] + "</a></li>";
             }
             // end collapsable panel
             str += "</ul> </div>";
