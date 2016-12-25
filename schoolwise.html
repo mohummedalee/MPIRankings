@@ -1,0 +1,82 @@
+<div id="schoolwise-function-imported" class="container">
+    <form id="schoolform" name="schoolform" method="get" action="javascript:Controller.findSchool();">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="input-group">
+                    <input type="search" data-provide="typeahead" autocomplete="off" id="school-name" class="form-control" placeholder="School name" />
+                    <span class="input-group-btn">
+                        <!--Span to contain the button-->
+                        <button class="btn btn-primary" type="button" onclick="javascript:Controller.findSchool();">
+                            Search
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- temporarily removing style="display: none;" -->
+    <div id="search-results" style="display: none;">
+        <div class="row">
+            <div class="col-md-5 col-md-offset-1 top-buffer">
+                <!-- Stats panel on the left -->
+                <div class="panel panel-default" id="school-stats-div">
+                    <div class="panel-heading">
+                        Ranking Statistics
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <!-- <li class="list-group-item">
+                                Highest ranking: <span id="highest-ranking" class="stat-item"></span>
+                            </li> -->
+                            <li class="list-group-item">
+                                Strong areas:
+                                <span id="strongest-areas" class="stat-item"></span>
+                            </li>
+                            <li class="list-group-item list-group-item-success" id="unconventional-item">
+                                Unconventional strength(s): <span id="unconventional-strength" class="stat-item"></span>
+                            </li>
+                            <li class="list-group-item">
+                                Weaker areas:
+                                <span id="weakest-areas" class="stat-item"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 id="computed-stats-heading" class="list-group-item-heading" style="text-decoration: underline;"></h5>
+                                    Mode ranking: <span id="mode-ranking" class="stat-item"></span>
+                                    <br />
+                                    Median ranking: <span id="median-ranking" class="stat-item"></span>
+                                    <br />
+                                    First quartile ranking: <span id="first-quartile-ranking" class="stat-item"></span>
+                                    <br />
+                                    Third quartile ranking: <span id="third-quartile-ranking" class="stat-item"></span>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plot panel on the left -->
+                <div class="panel panel-default" id="ranking-plot-div">
+                    <div class="panel-heading">
+                        Ranking Trend
+                    </div>
+                    <div class="panel-body">
+                        <div id="chart-container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faculty panel on the right -->
+            <div class="col-md-5 top-buffer">
+                <div class="panel panel-default" id="faculty-div">
+                    <div class="panel-heading">
+                        Faculty Listing
+                    </div>
+                    <div class="panel-body" id="faculty-div-body">
+                            <!-- Content will be filled in by javascript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

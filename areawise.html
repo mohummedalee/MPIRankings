@@ -1,0 +1,81 @@
+<script>
+    areawise_area_val = 'Artificial Intelligence';
+    areawise_region_val = 'United States'
+
+
+    function changeButtonVal(buttonID, val){
+        $(buttonID).html(val.trim() + ' <span class="caret"></span>');
+
+        if(buttonID === '#region-selection-button'){
+            areawise_region_val = val;
+        }
+        else if(buttonID === '#area-selection-button'){
+            areawise_area_val = val;
+        }
+
+        Controller.rankArea(areawise_area_val, areawise_region_val);
+    }
+
+    // things to do at the start
+    setTimeout(function(){
+        // 1. show initial ranking for Artificial Intelligence in United States
+        Controller.rankArea(areawise_area_val, areawise_region_val);
+
+        // 2. populate area list
+        $('#area-selection-list').html(
+            (function(){
+                // return string of all the <li>'s so they can be rendered
+                var str = "";
+                for(var acronym in Controller.cleanNames){
+                    str += "<li><a href=\"#\" onclick=\"changeButtonVal('#area-selection-button', '" + Controller.cleanNames[acronym] + "')\">" + Controller.cleanNames[acronym] + "</a></li>";
+                }
+                return str;
+            })()
+        );
+    }, 1000);
+</script>
+
+<div id="areawise-function-imported" class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Area Ranking
+                </div>
+                <div class="panel-body" id="area-ranking-div">
+                    <div class="row">
+                        <!-- eccentricity/spearman correlation also goes in this row -->
+                        <div class="btn-group bottom-buffer left-buffer">
+                            <button type="button" id="area-selection-button" class="btn btn-primary btn-md dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Artificial Intelligence <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="area-selection-list">
+                            </ul>
+                        </div>
+
+                        <div class="btn-group bottom-buffer left-buffer-small">
+                            <button type="button" id="region-selection-button" class="btn btn-primary btn-md dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                United States <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="changeButtonVal('#region-selection-button', 'United States')">United States</a></li>
+                                <li><a href="#" onclick="changeButtonVal('#region-selection-button', 'Europe')">Europe</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="row bottom-buffer">
+                        <span id="correlation-label" class="label label-info label-md left-buffer">Correlation</span>
+                    </div>
+
+                    <div class="row">
+                        <table id="area-ranking-list" class="table table-striped">
+                            <!-- content filled by javascript -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.top-buffer{
+    margin-top: 20px;
+}
+
+.left-buffer{
+    margin-left: 25px;
+}
+
+.left-buffer-small{
+    margin-left: 10px;
+}
+
+.bottom-buffer{
+    margin-bottom: 20px;
+}
+
+.stat-item{
+    font-weight: bold;
+}
+
+.label-md{
+    font-size: 14px;
+}
+
+.twitter-typeahead, .tt-hint, .tt-input, .tt-menu{
+    width: 100%;
+}

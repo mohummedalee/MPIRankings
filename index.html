@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>CS Rankings @ MPI</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/custom.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+        <script src="js/jquery-1.12.3.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/papaparse.min.js"></script>
+        <script src="https://unpkg.com/lodash@4/lodash.min.js"></script>
+        <script src="js/schoolstats.js"></script>
+        <script src="js/async.js"></script>
+        <script src="js/q.js"></script>
+        <script src="js/bootstrap3-typeahead.min.js"></script>
+        <script src="js/lodash.core.js"></script>
+        <script src="js/math.min.js"></script>
+        <script src="js/spearson.js"></script>
+        <script src="controller.js"></script>
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+        <script>
+            function switchFunction(divid){
+                // disables the div in the argument and enables the other one
+                $(divid).hide();
+
+                if(divid == '#schoolwise-function'){
+                    $('#areawise-function').show();
+                    $('#areawise-function-tab').addClass('active');
+                    $('#schoolwise-function-tab').removeClass('active');
+                }
+                else if(divid == '#areawise-function'){
+                    $('#schoolwise-function').show();
+                    $('#areawise-function-tab').removeClass('active');
+                    $('#schoolwise-function-tab').addClass('active');
+                }
+            }
+
+            // load schoolwise ranking option
+            $(function(){
+                $('#schoolwise-function').load('schoolwise.html');
+            });
+
+            // load areawise rankings option
+            $(function(){
+                $('#areawise-function').load('areawise.html');
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row" id="page-header-row">
+                <div class="page-header">
+                    <h1>Rankings with a Grain of Salt</h1>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <p>
+                                We try to present the bigger picture of CS school rankings using
+                                both a school-centric and an area-centric view. Ranking criterion is the
+                                same as used by <a href="http://csrankings.org">CSRankings</a>.
+                                Faculty listings are based on whether a faculty member has published
+                                in an area in the past 5 years.
+                                The app currently only supports US and European schools
+                                and rankings are calculated by looking through faculty publications
+                                year 2000 onwards.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-md-offset-4 bottom-buffer" id="tab-buttons">
+            <ul class="nav nav-tabs nav-justified">
+                <li id="schoolwise-function-tab" class="active">
+                    <a onclick="switchFunction('#areawise-function');" href="#">By School</a>
+                </li>
+                <li id="areawise-function-tab">
+                    <a onclick="switchFunction('#schoolwise-function');" href="#">By Area</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- inner html loaded from external files -->
+        <div id="schoolwise-function"></div>
+        <div id="areawise-function" style="display: none;"></div>
+    </body>
+</html>
