@@ -1,6 +1,6 @@
 // Should have a singleton object Controller that does all the ranking and stuff
 
-// TODO: Rankings are not exactly equal to CSRankings. Fix that later. Start investigating with the combined scores in areaToDepartment.
+// TODO: Only difference from CSRankings is the absensce of a tie-breaking mechanism. Functions: rankArea and findSchool
 
 var Controller = function(cb){
 
@@ -257,14 +257,12 @@ var Controller = function(cb){
             jQuery('#unconventional-item')[0].style.display = 'none';
         }
 
-        // show the plot. TODO: fix this
-        // this.plotRankings(allAreaRankings, avgRank);
+        // show the plot.
         this.plotRankings(allAreaRankings, statsDict['second_quartile']);
     }
 
     this.showFacultyList = function(areaToFaculty){
         var str = "<div class=\"panel-group\" id=\"faculty-panels\">"
-        // areaToFaculty = apiData['apiResult'];
         for(area in areaToFaculty){
             // start panel
             str += "<div class=\"panel panel-default\">";
@@ -439,18 +437,6 @@ var Controller = function(cb){
             controller_obj = this,
             allAreaRankings = {},
             computedStats = schoolstats[schoolName];
-        // var schoolName = "Carnegie Mellon University";
-        // console.log('in findSchool>>', schoolName);
-        // findAreaRankForSchool = function(school, area, region, cb){
-        // controller_obj.findAreaRankForSchool(schoolName, 'ai', 'europe', controller_obj.echo);
-
-        // find ranks of current school in all areas
-        // for(area in controller_obj.rankings){
-        //     var areaRanking = controller_obj.rankings[area];
-        //     var schoolInAreaRank = areaRanking.indexOf(schoolName) + 1
-        //     if(schoolInAreaRank)
-        //         allAreaRankings[area] = schoolInAreaRank;
-        // }
 
         // find which region to rank school against
         var regionToRankAgainst = "";
@@ -494,29 +480,11 @@ var Controller = function(cb){
             }
         }
 
+        // render all school stats
         Controller.showSchoolStats(computedStats, topAreas, bottomAreas, unconventional, allAreaRankings);
-        // $.get({
-        //     url: this.url + "/schoolwise/stats",
-        //     data: {'schoolName': schoolName},
-        //     dataType: 'json',
-        //     success: function(data){
-        //         // show all stats after getting results from api
-        //         Controller.showSchoolStats(data, topAreas, unconventional, allAreaRankings);
-        //     }
-        // });
 
         // get area-wise faculty listing from api
         Controller.facultyAreas(schoolName, Controller.showFacultyList);
-        // $.get({
-        //     url: this.url + "/schoolwise/faculty",
-        //     data: {'schoolName': schoolName},
-        //     dataType: 'json',
-        //     success: function(data){
-        //         // show faculty list after retrieving from api
-        //         console.log('success with faculty', data);
-        //         Controller.showFacultyList(data);
-        //     }
-        // });
     }
 
     this.echo = function(){
