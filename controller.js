@@ -312,21 +312,27 @@ var Controller = function(cb){
         }
         $('#area-ranking-list').html(str);
         $('#area-ranking-list').show(); // might have been hidden through de-selections
+        $('#correlation-label').show();
 
-        $('#correlation-label').html("Correlation with all-area ranking: " + String(correlation.toFixed(3)));
         if(correlation >= .7){
+            $('#correlation-label').html("Correlation with all-area ranking: High (" + String(correlation.toFixed(3)) + ")");
+
             // disable all other styles and enable blue (label-info)
             $('#correlation-label').removeClass('label-danger');
             $('#correlation-label').removeClass('label-warning');
             $('#correlation-label').addClass('label-info');
         }
         else if(correlation >= .4 && correlation < .7){
+            $('#correlation-label').html("Correlation with all-area ranking: Moderate (" + String(correlation.toFixed(3)) + ")");
+
             // disable all other styles and enable yellow (label-warning)
             $('#correlation-label').removeClass('label-info');
             $('#correlation-label').removeClass('label-danger');
             $('#correlation-label').addClass('label-warning');
         }
         else if(correlation < .4){
+            $('#correlation-label').html("Correlation with all-area ranking: Low (" + String(correlation.toFixed(3)) + ")");
+
             // disable all other styles and enable red (label-danger)
             $('#correlation-label').removeClass('label-info');
             $('#correlation-label').removeClass('label-warning');

@@ -26,7 +26,11 @@
 
         // if all areas have been de-selected, make ranking table disappear
         if(selected_areas == 0){
+            // hide list
             $('#area-ranking-list').hide();
+            // hide correlation stub
+            $('#correlation-label').hide();
+
             $(buttonID).html('Area <span class="caret"></span>');
             return;
         }
@@ -112,7 +116,9 @@
                     </div>
 
                     <div class="row bottom-buffer">
-                        <span id="correlation-label" class="label label-info label-md left-buffer">Correlation</span>
+                        <span id="correlation-label" data-toggle="tooltip" data-placement="right"
+                        title="Spearman correlation of current ranking with the ranking when all areas are selected. Certain areas look significantly different than the combined ranking."
+                        class="label label-info label-md left-buffer">Correlation</span>
                     </div>
 
                     <div class="row">
