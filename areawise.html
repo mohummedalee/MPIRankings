@@ -1,37 +1,83 @@
 <script>
     areawise_area_val = 'Artificial Intelligence';
-    areawise_region_val = 'United States'
+    areawise_region_val = 'United States';
 
+    ranking_weights = {}    // Dictionry of checkbox weights. Deal with 'all' carefully
 
+    // Function to implement behavior for changing region or area combination
+    // Toggles checkboxes, builds rankings and shows it
     function changeButtonVal(buttonID, val){
-        $(buttonID).html(val.trim() + ' <span class="caret"></span>');
-
+        // Full name passed in case of region; only acronym in case of area selections
         if(buttonID === '#region-selection-button'){
             areawise_region_val = val;
         }
         else if(buttonID === '#area-selection-button'){
-            areawise_area_val = val;
+            // toggle weight
+            ranking_weights[val] = !ranking_weights[val] + 0;   // +0 to convert to int
+            // toggle checkbox
+            $('#checkbox-'+val).prop('checked', !$('#checkbox-'+val).prop('checked'));
+
+            // recount selected_areas
+            var weights_arr = Object.keys(ranking_weights).map(function(area){
+                return ranking_weights[area];
+            });
+            selected_areas = weights_arr.reduce(function(a, b){return a+b;});
         }
 
-        Controller.rankArea(areawise_area_val, areawise_region_val);
+        // if all areas have been de-selected, make ranking table disappear
+        if(selected_areas == 0){
+            $('#area-ranking-list').hide();
+            $(buttonID).html('Area <span class="caret"></span>');
+            return;
+        }
+
+        // Change button appearance
+        if(buttonID === '#region-selection-button'){
+            $(buttonID).html(val.trim() + ' <span class="caret"></span>');
+        }
+        else if(buttonID === '#area-selection-button'){
+            if(selected_areas > 1){
+                // if more than one areas selected, show 'Multiple'
+                $(buttonID).html('Multiple' + ' <span class="caret"></span>');
+            }
+            else{
+                // otherwise show active area name in button
+                for(var area in ranking_weights){
+                    if(ranking_weights[area] == 1){
+                        $(buttonID).html(Controller.cleanNames[area] + ' <span class="caret"></span>');
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Calculate and display ranking
+        Controller.rankAreaCombination(ranking_weights, areawise_region_val);
     }
 
     // things to do at the start
     setTimeout(function(){
-        // 1. show initial ranking for Artificial Intelligence in United States
-        Controller.rankArea(areawise_area_val, areawise_region_val);
-
-        // 2. populate area list
+        // 1. populate area list
         $('#area-selection-list').html(
             (function(){
                 // return string of all the <li>'s so they can be rendered
                 var str = "";
                 for(var acronym in Controller.cleanNames){
-                    str += "<li><a href=\"#\" onclick=\"changeButtonVal('#area-selection-button', '" + Controller.cleanNames[acronym] + "')\">" + Controller.cleanNames[acronym] + "</a></li>";
+                    str += "<li><a href=\"#\" onclick=\"changeButtonVal('#area-selection-button', '" + acronym + "')\"><input type=\"checkbox\" id=\"checkbox-" + acronym +"\">&nbsp; " + Controller.cleanNames[acronym] + "</input></a></li>";
                 }
                 return str;
             })()
         );
+
+        // 2. set up for showing AI ranking in the US initially
+        for(var acronym in Controller.cleanNames){
+            $('#checkbox-'+acronym).prop('checked', false);
+            ranking_weights[acronym] = 0;
+        }
+        ranking_weights['ai'] = 1;
+        $('#checkbox-ai').prop('checked', true);
+        selected_areas = Object.keys(Controller.cleanNames).length;
+        Controller.rankAreaCombination(ranking_weights, areawise_region_val);
     }, 2000);
 </script>
 

@@ -119,18 +119,28 @@ var Controller = function(cb){
             else continue;
         }
 
-        // score in 'all' areas is geometric mean of area scores
+        // score in 'all' areas is geometric mean of other area scores
         controller_obj.areaToDepartment['all'] = {};
-        var total_areas = 23;
+        var total_areas = Object.keys(controller_obj.cleanNames).length;
         var hits = {};
-        for(var area in controller_obj.areaToDepartment){
-            for(var dept in controller_obj.areaToDepartment[area]){
-                // running geometric mean
-                if(!(dept in controller_obj.areaToDepartment['all'])){
-                    controller_obj.areaToDepartment['all'][dept] = 1;
+        for(var i=0; i < controller_obj.schoolNames.length; ++i){
+            var dept = controller_obj.schoolNames[i];
+            controller_obj.areaToDepartment['all'][dept] = [];
+            for(var area in controller_obj.cleanNames){
+                if(!(dept in controller_obj.areaToDepartment[area])){
+                    controller_obj.areaToDepartment['all'][dept].push(1);
                 }
-                controller_obj.areaToDepartment['all'][dept] *= Math.pow(controller_obj.areaToDepartment[area][dept], 1.0/total_areas);
+                else{
+                    controller_obj.areaToDepartment['all'][dept].push(controller_obj.areaToDepartment[area][dept]+1.0);
+                }
             }
+        }
+        // aggregate each school's score by geometric mean
+        for(var dept in controller_obj.areaToDepartment['all']){
+            controller_obj.areaToDepartment['all'][dept] = Math.pow(
+                controller_obj.areaToDepartment['all'][dept].reduce(function(a, b){return a*b;}),
+                1.0/total_areas
+            );
         }
 
 
@@ -301,6 +311,7 @@ var Controller = function(cb){
             str += "<tr>" + "<td>" + rank + "</td>" + "<td>" + ranks[rank] + "</td>" + "</li>";
         }
         $('#area-ranking-list').html(str);
+        $('#area-ranking-list').show(); // might have been hidden through de-selections
 
         $('#correlation-label').html("Correlation with all-area ranking: " + String(correlation.toFixed(3)));
         if(correlation >= .7){
@@ -371,6 +382,92 @@ var Controller = function(cb){
         // sentinel value would be 0
         // cb(departmentRank);
         cb(schoolInAreaRank);
+    }
+
+    // find a ranking of top 100 schools in `region` according to areas specified by `weightDict`
+    this.rankAreaCombination = function(weightDict, region){
+        var controller_obj = this;
+
+        var n = 0;  // number of weighted areas
+        // manually count the number of weighted areas
+        for(var area in weightDict){
+            if(weightDict[area] == 1){
+                n += 1;
+            }
+        }
+
+        // find region to rank against
+        var region = controller_obj.regionAcronymsDict[region];
+
+        // pull out all schools of given region
+        var regionSchools = {}; // all schools of given region
+        for(var i=0; i<controller_obj.schoolNames.length; ++i){
+            var dept = controller_obj.schoolNames[i];
+            if(controller_obj.regionDict[dept] == region){
+                regionSchools[dept] = [];   // array will later contain scores of each weighted area
+            }
+        }
+
+        // "It's okay to not care about efficiency when your data is small"
+        // - Abraham Lincoln
+
+        // pick up scores for each weighted area
+        for(var dept in regionSchools){
+            for(var area in weightDict){
+                if(weightDict[area] == 1){
+                    // if school publishes in area, count smoothed score. else just add 1
+                    if(dept in controller_obj.areaToDepartment[area])
+                        regionSchools[dept].push(controller_obj.areaToDepartment[area][dept] + 1.0);
+                    else
+                        regionSchools[dept].push(1);
+                }
+            }
+        }
+
+        // aggregate each school's score by geometric mean
+        for(var dept in regionSchools){
+            regionSchools[dept] = Math.pow(regionSchools[dept].reduce(function(a, b){return a*b;}),
+                                            1.0/n);
+        }
+
+        // sort schools and create array from dictionary
+        var dictItems = Object.keys(regionSchools).map(function(key){
+            return [key, regionSchools[key]];
+        });
+        dictItems.sort(function(first, second){
+            return second[1] - first[1];    // descending
+        });
+
+        // assign ranks (make school to score dictionary alongside for correlation)
+        // no tie mechanism right now
+        var rank = 1;
+        var deptScore = {};
+        var deptRanks = {};
+        for(var i=0; i<dictItems.length; ++i){
+            deptRanks[rank] = dictItems[i][0];
+            deptScore[dictItems[i][0]] = dictItems[i][1];
+            rank += 1;
+            if(rank > 100){
+                // don't rank more than 100 schools for now
+                break;
+            }
+        }
+
+        // not using Object.values because not supported in Safari
+        // make array of current combination scores
+        var current_area_scores = Object.keys(deptScore).map(function(dept){
+            return deptScore[dept];
+        });
+        // make array of all area scores
+        var all_area_scores = [];
+        for(var dept in deptScore){
+            all_area_scores.push(controller_obj.areaToDepartment['all'][dept]);
+        }
+        // calculate correlation
+        var corr = spearson.correlation.spearman(current_area_scores, all_area_scores);
+
+        // render the ranking to the #area-ranking-list
+        controller_obj.showAreawise(deptRanks, corr);
     }
 
     this.rankArea = function(area, region){
@@ -567,8 +664,8 @@ var Controller = function(cb){
         'chi': 'Human Computer Interaction',
         'robotics': 'Robotics',
         'bio': 'Comp. Biology',
-        'da': 'Design Automation',
-        'all': 'All Areas'
+        'da': 'Design Automation'
+        // 'all': 'All Areas'
     }
     this.nameToAcronym = {
         'Artificial Intelligence': 'ai',
@@ -593,8 +690,8 @@ var Controller = function(cb){
         'Human Computer Interaction': 'chi',
         'Robotics': 'robotics',
         'Comp. Biology': 'bio',
-        'Design Automation': 'da',
-        'All Areas': 'all'
+        'Design Automation': 'da'
+        // 'All Areas': 'all'
     }
     this.regionAcronymsDict = {
         'United States': 'usa',
@@ -624,6 +721,7 @@ function init_singleton(){
     window.Controller = new Controller();
     Controller.init().done(function(){
         console.log(">>> Initialization successful...");
+        console.log('>>> Debug', Controller.areaToDepartment);
     });
 }
 
