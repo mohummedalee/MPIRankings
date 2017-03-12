@@ -1,156 +1,189 @@
 institution,region
-Aarhus University,europe
-Australian National University,australasia
-Concordia University,canada
-DIKU,europe
-EPFL,europe
-ETH Zurich,europe
-Ecole Normale Superieure de Cachan,europe
 Ecole Normale Superieure,europe
-Ecole Normale Superieure de Lyon,europe
-Hebrew University of Jerusalem,europe
-Imperial College London,europe
-Massey University,australasia
-Max Planck Institute,europe
-McGill University,canada
-Monash University,australasia
-Polytechnic University of Catalonia,europe
-RWTH Aachen,europe
-Simon Fraser University,canada
-TU Darmstadt,europe
-TU Dresden,europe
-TU Munich,europe
-Technion - Israel Institute of Technology,europe
-Tel Aviv University,europe
-University College London,europe
-University of Adelaide,australasia
-University of Alberta,canada
-University of Athens,europe
-University of Auckland,australasia
-University of Bristol,europe
-University of British Columbia,canada
-University of Calgary,canada
-University of Canterbury,australasia
-University of Cambridge,europe
-University of Edinburgh,europe
-University of Kent,europe
-University of Luxembourg,europe
-University of Melbourne,australasia
-University of Montreal,canada
-University of Oxford,europe
-University of Otago,australasia
-University of Queensland,australasia
-University of Salerno,europe
-University of Sydney,australasia
-University of Tartu,europe
-University of Toronto,canada
-University of Waikato,australasia
-University of Warsaw,europe
-University of Waterloo,canada
-University of Western Australia,australasia
-University of Zurich,europe
-UNSW,australasia
-Victoria University of Wellington,australasia
-VU Amsterdam,europe
 Brown University,usa
 Rice University,usa
 University of Connecticut,usa
 University of Florida,usa
-Washington State University,usa
+University of Kent,europe
+University of Texas at Arlington,usa
+IIIT Bangalore,australasia
+University of Waterloo,canada
+EPFL,europe
+Western University,canada
+University of North Carolina,usa
+Australian National University,australasia
+Victoria University of Wellington,australasia
 University of Nebraska,usa
+University of Tartu,europe
 North Carolina State University,usa
+Chulalongkorn University,australasia
 University of Illinois at Urbana-Champaign,usa
 Arizona State University,usa
 University of South Florida,usa
 University of Pittsburgh,usa
 University of Michigan,usa
-University of Washington,usa
+University of Pennsylvania,usa
+Virginia Commonwealth University,usa
 University of Rochester,usa
-University of California - Santa Cruz,usa
+IIT Madras,australasia
+University of British Columbia,canada
+Queen’s University,canada
 University of Kentucky,usa
 Boston University,usa
+University of Illinois at Chicago,usa
 Emory University,usa
-University of Illinois - Chicago,usa
+Nanyang Technological University,australasia
 University of California - San Diego,usa
+University of Athens,europe
 University of Central Florida,usa
+Washington State University,usa
+Binghamton University,usa
 Oregon State University,usa
-University of California - Santa Barbara,usa
-University of California - Los Angeles,usa
+University of Otago,australasia
+University of Tennessee,usa
+New York University,usa
+VU Amsterdam,europe
+McMaster University,canada
+Monash University,australasia
+Tel Aviv University,europe
 Harvard University,usa
+University of Massachusetts Lowell,usa
 Ohio State University,usa
+Boise State University,usa
 Drexel University,usa
+University of California - Santa Cruz,usa
 Boston College,usa
+University of Maryland - Baltimore County,usa
+University of Chicago,usa
+University of Bristol,europe
+Ecole Normale Superieure de Cachan,europe
+Politecnico di Milano,europe
 Georgetown University,usa
-University of Pennsylvania,usa
+Toyota Technological Institute at Chicago,usa
 Brandeis University,usa
 Vanderbilt University,usa
+IIT Delhi,australasia
 Georgia Institute of Technology,usa
+TU Delft,europe
 Brigham Young University,usa
 University of Minnesota,usa
 New Mexico State University,usa
 College of William and Mary,usa
 Pennsylvania State University,usa
 CUNY,usa
+TU Dresden,europe
 Rochester Institute of Technology,usa
+Washington University in St. Louis,usa
+McGill University,canada
 Naval Postgraduate School,usa
-University of Buffalo,usa
+University of Edinburgh,europe
 Johns Hopkins University,usa
-Rutgers University,usa
+RWTH Aachen,europe
+University of Bath,europe
+IIT Kharagpur,australasia
+University of Melbourne,australasia
+IMDEA Software Institute,europe
+University of Sydney,australasia
+University of Oxford,europe
 Virginia Tech,usa
-University of North Carolina,usa
+University of Queensland,australasia
+University of Canterbury,australasia
 University of California - Berkeley,usa
+IIIT Delhi,australasia
 Stanford University,usa
 University of Nevada,usa
-University of Massachusetts - Lowell,usa
+Concordia University,canada
+University of Massachusetts Amherst,usa
+IISc Bangalore,australasia
+University of Salerno,europe
 California Institute of Technology,usa
-Washington University - St. Louis,usa
-New York University,usa
+University of California - Santa Barbara,usa
 University of California - Riverside,usa
+University of Luxembourg,europe
+Chulalongkorn Uniersity,usa
 Worcester Polytechnic Institute,usa
+University of California - Los Angeles,usa
 University of Southern California,usa
+University of Notre Dame,usa
+University College London,europe
 Columbia University,usa
+Massey University,australasia
 University of Miami,usa
+University of Western Australia,australasia
+IIT Roorkee,australasia
+Carleton University,canada
 University of Virginia,usa
 Texas A&M University,usa
 George Washington University,usa
-University of Tennessee,usa
+Princeton University,usa
 University of Iowa,usa
 University of Wisconsin - Madison,usa
+Bar-Ilan University,europe
+Polytechnic University of Catalonia,europe
+IIT Kanpur,australasia
 Michigan State University,usa
 Clemson University,usa
 Yale University,usa
-University of Utah,usa
+UNSW,australasia
+University of Adelaide,australasia
 Northeastern University,usa
+University of Warsaw,europe
 University of Arizona,usa
 Stony Brook University,usa
+University of Washington,usa
 Purdue University,usa
 Massachusetts Institute of Technology,usa
 Kansas State University,usa
-University of Notre Dame,usa
+IST Austria,europe
+ETH Zurich,europe
+IIT Hyderabad,australasia
 Carnegie Mellon University,usa
+IIT Bombay,australasia
 University of Kansas,usa
+University of Texas at Dallas,usa
+University of Utah,usa
 University of California - Irvine,usa
+IIIT Hyderabad,australasia
+University of Texas at Austin,usa
 University of California - Davis,usa
 Northwestern University,usa
+University of Toronto,canada
+Aarhus University,europe
 Rensselaer Polytechnic Institute,usa
-University of Texas - Austin,usa
+University of Zurich,europe
 University of Oregon,usa
-University of Texas - Dallas,usa
-University of Massachusetts - Amherst,usa
 University of Delaware,usa
+Max Planck Institute,europe
+TU Darmstadt,europe
 Auburn University,usa
+University at Buffalo,usa
+University of Calgary,canada
 Florida State University,usa
-University of Chicago,usa
+Rutgers University,usa
+Ecole Normale Superieure de Lyon,europe
 Colorado State University,usa
+Imperial College London,europe
 Cornell University,usa
+University of Auckland,australasia
 University of Colorado Boulder,usa
+National University of Singapore,australasia
 Duke University,usa
 Tufts University,usa
+University of Montreal,canada
 George Mason University,usa
+DIKU,europe
 University of Georgia,usa
+Hebrew University of Jerusalem,europe
+OHSU,usa
+Simon Fraser University,canada
 Indiana University,usa
+University of Waikato,australasia
 University of Maryland - College Park,usa
 NJIT,usa
 University of New Mexico,usa
+University of Alberta,canada
 Dartmouth College,usa
-Princeton University,usa
+Stevens Institute of Technology,usa
+TU Munich,europe
+Technion - Israel Institute of Technology,europe
+University of Cambridge,europe

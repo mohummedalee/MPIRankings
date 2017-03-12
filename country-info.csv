@@ -1,6 +1,9 @@
 institution,region
 Aarhus University,europe
 Australian National University,australasia
+Bar-Ilan University,europe
+Carleton University,canada
+Chulalongkorn University,australasia
 Concordia University,canada
 DIKU,europe
 EPFL,europe
@@ -9,14 +12,33 @@ Ecole Normale Superieure de Cachan,europe
 Ecole Normale Superieure,europe
 Ecole Normale Superieure de Lyon,europe
 Hebrew University of Jerusalem,europe
+IMDEA Software Institute,europe
 Imperial College London,europe
+IIIT Bangalore,australasia
+IIIT Delhi,australasia
+IIIT Hyderabad,australasia
+IISc Bangalore,australasia
+IIT Bombay,australasia
+IIT Delhi,australasia
+IIT Hyderabad,australasia
+IIT Kanpur,australasia
+IIT Kharagpur,australasia
+IIT Madras,australasia
+IIT Roorkee,australasia
+IST Austria,europe
 Massey University,australasia
 Max Planck Institute,europe
 McGill University,canada
+McMaster University,canada
 Monash University,australasia
+Nanyang Technological University,australasia
+National University of Singapore,australasia
 Polytechnic University of Catalonia,europe
+Politecnico di Milano,europe
+Queen’s University,canada
 RWTH Aachen,europe
 Simon Fraser University,canada
+TU Delft,europe
 TU Darmstadt,europe
 TU Dresden,europe
 TU Munich,europe
@@ -27,6 +49,7 @@ University of Adelaide,australasia
 University of Alberta,canada
 University of Athens,europe
 University of Auckland,australasia
+University of Bath,europe
 University of Bristol,europe
 University of British Columbia,canada
 University of Calgary,canada
@@ -52,3 +75,4 @@ University of Zurich,europe
 UNSW,australasia
 Victoria University of Wellington,australasia
 VU Amsterdam,europe
+Western University,canada

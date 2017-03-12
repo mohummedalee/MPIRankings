@@ -46,7 +46,6 @@ var Controller = function(cb){
         Papa.parse("country-info-expanded.csv", {
             download: true,
             header: true,
-            newline: '\n',
             complete: function(results){
                 var data = results.data;
                 for (var i=0; i<data.length; ++i){
