@@ -123,9 +123,11 @@ for school in school_list:
 
     # maintain all ranks for the current school
     allranks = {}
-    # random_area_combs = random.sample(xrange(1, final_integer+1), 100)
-    weight_integer = 1
-    while(weight_integer <= final_integer):
+    rnd_sample_count = 100000
+    random_area_combs = random.sample(xrange(1, final_integer+1), rnd_sample_count)
+    # weight_integer = 1
+    # while(weight_integer <= final_integer):
+    for weight_integer in random_area_combs:
         # convert area combination into a bitstring
         weight_string = str(BitVector(intVal=weight_integer, size=23))
         # print weight_string
