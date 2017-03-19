@@ -725,7 +725,6 @@ function init_singleton(){
     window.Controller = new Controller();
     Controller.init().done(function(){
         console.log(">>> Initialization successful...");
-        console.log('>>> Debug', Controller.areaToDepartment);
     });
 }
 

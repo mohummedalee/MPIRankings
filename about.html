@@ -1,0 +1,82 @@
+<html>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+    <title>About MPI Rankings</title>
+    <body>
+        <div id="about-container" class="container top-buffer">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="background-color: #d9edf7;">
+                            <h3>About the Project</h3>
+                        </div>
+
+                        <div class="panel-body" id="about-container-panel">
+                                <div id="about-text">
+                                    <p>
+                                        We built this site to demonstrate that ranking systems can be built
+                                        with the focus of educating graduate students and the public instead
+                                        of opinionating them. The <a target="_blank" href="http://csrankings.org">CS Rankings</a>
+                                        project is a good step in the direction of building fairer and more transparent systems for ranking.
+                                        We have tried to build an extension of it that communicates a different view of the rankings.
+                                    </p>
+
+                                    <h4 style="text-decoration: underline;">The By School and By Area tabs</h4>
+                                    <p>
+                                        We have identified that there are broadly two ways of looking at CS school rankings:
+                                        a) looking at a particular school's overall research portfolio and b) looking
+                                        at how different schools compete against each other in a particular area/combination of areas.
+                                        This is the reason we have provided two views here.
+                                        The <i>By School</i> view might be useful for graduate students to understand departments they would
+                                        like to apply to or have offers from. The <i>By Area</i> view is the more conventional view of rankings.
+                                    </p>
+
+                                    <h4 style="text-decoration: underline;">Not all areas are the same</h4>
+                                    <p>
+                                        Even when looking at rankings in a particular area, it is important to understand that not
+                                        all rankings look the same. Very often, students have preconceived notions of prestige which might not
+                                        hold true in all areas. To avoid this pitfall, we clearly show the Spearman's rank correlation with the "All Areas" rank
+                                        of whatever areas are selected in the <i>By Area</i> view. Our main motive is to communicate that if an area has low
+                                        correlation with the default ranking then students need to take a deeper look at the research and
+                                        set aside their notions of institutional prestige.
+                                    </p>
+
+                                    <h4 style="text-decoration: underline;">Statistics over a distribution of rankings</h4>
+                                    <p>
+                                        Moreover, we have observed that given the combinatorial flexibility of the CS Rankings system, there are 2<sup>areas</sup>
+                                        ways to build a ranking and we have a distribution over ranks for each department. If somehow, certain attributes of
+                                        this distribution could be communicated with the students, it might be beneficial to them. To this end, we compute
+                                        stats like the mode, median, first and third quartile ranks out of each school's distributions. These stats are
+                                        shown in the Ranking Statistics panel in the <i>By School</i> view. We compute these stats on a random sample of 200,000
+                                        rankings out of the total 2<sup>areas</sup> rankings.
+                                        We have also tried to highlight here any unconventional strenghts that a school might have; if an area's rank is 1.5 standard
+                                        deviations above the computed median, it is mentioned as an unconventional strength for that school.
+                                    </p>
+
+                                    <h4 style="text-decoration: underline;">Faculty listing by area</h4>
+                                    <p>
+                                        Eventually, we realize that rankings are only a small part of the complex problem of graduate school applications
+                                        and that not all information can be computed. So we list faculty members that have published in the top venues in
+                                        an area in the past 5 years and list down their homepages in the Faculty Listing section of the <i>By School</i>
+                                        view. This is merely to enable the students to explore the faculty's research on their own, and make their own
+                                        decisions thereon.
+                                    </p>
+
+                                    <br />
+
+                                    <h5 style="text-decoration: underline;">Contact</h5>
+                                    <p>
+                                        This project has been built in the <a href="https://socialnetworks.mpi-sws.org/">Social Computing Group</a>
+                                        at the <a href="http://mpi-sws.org">Max Planck Institute for Software Systems</a>. If you face any issues,
+                                        please open an issue on the <a href="https://github.com/mohummedalee/MPIRankings">Github repo</a>, or write an email to Muhammad Ali
+                                        at <i>muali (at-sign) mpi-sws (dot) org</i>.
+                                    </p>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
